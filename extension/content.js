@@ -293,10 +293,15 @@
   chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     if (!msg || typeof msg.type !== 'string') return false;
     if (msg.type === 'echoTx:probe') {
-      // Only section pages answer a broadcast, so other frames don't race them.
+      // Course frames answer right away; other Echo360 frames answer a bit
+      // later, so the popup can still say "go to the course page".
       const p = probe();
-      if (p.sectionId) sendResponse(p);
-      return false;
+      if (p.sectionId) {
+        sendResponse(p);
+        return false;
+      }
+      setTimeout(() => sendResponse(p), 400);
+      return true;
     }
     if (msg.type === 'echoTx:start') {
       if (msg.sectionId && msg.sectionId !== findSectionId()) return false;

@@ -2,17 +2,11 @@
   "manifest_version": 3,
   "name": "Echo360 Transcript Extractor",
   "short_name": "Echo360 Transcripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Download every Echo360 lecture transcript in a course as one ZIP. Works inside Canvas and other LMSs, at any university on Echo360.",
-  "permissions": ["downloads", "storage", "scripting", "activeTab"],
-  "host_permissions": [
-    "*://*.echo360.org/*",
-    "*://*.echo360.org.uk/*",
-    "*://*.echo360.org.au/*",
-    "*://*.echo360.net.au/*",
-    "*://*.echo360.ca/*",
-    "*://*.echo360.com/*",
-    "*://*.echo360.net/*"
+  "permissions": [
+    "downloads",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js",
@@ -29,7 +23,10 @@
         "*://*.echo360.com/*",
         "*://*.echo360.net/*"
       ],
-      "js": ["lib/transcript.js", "content.js"],
+      "js": [
+        "lib/transcript.js",
+        "content.js"
+      ],
       "all_frames": true,
       "run_at": "document_idle"
     }

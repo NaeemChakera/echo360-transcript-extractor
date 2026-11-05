@@ -73,11 +73,9 @@ Downloads the transcripts of all recordings in an Echo360 course and saves them 
 
 | Permission | Justification |
 |---|---|
-| `downloads` | Saves the ZIP file of transcripts that the user asked to download to their computer. |
-| `storage` | Remembers the user's chosen formats and shows download progress if the popup is closed and reopened. Stored locally only. |
-| `scripting` | Lets the popup detect the Echo360 course frame on the current page (for example, Echo360 embedded inside Canvas), including pages opened before the extension was installed. |
-| `activeTab` | When the user clicks the extension icon, lets it check the current page for an embedded Echo360 course. It has no access to pages the user hasn't clicked on. |
-| Host permissions (`*.echo360.org`, `.org.uk`, `.org.au`, `.net.au`, `.ca`, `.com`, `.net`) | Required to read the course's list of recordings and their transcripts from Echo360, using the user's existing Echo360 session. These are Echo360's regional cloud domains. No other sites are accessed. |
+| `downloads` | Used to save the ZIP file of transcripts, which the user explicitly asked for by clicking "Download all transcripts", to the user's computer. |
+| `storage` | Stores the user's chosen download formats and the progress of the current download, so the popup can show status if it is closed and reopened. Stored locally only; nothing is sent anywhere. |
+| Host permission (content script on `*.echo360.org`, `.org.uk`, `.org.au`, `.net.au`, `.ca`, `.com`, `.net`) | The extension runs only on Echo360's regional cloud domains (US, UK/EU, Australia/NZ, Canada) so it can read the course's list of recordings and their transcripts using the user's existing Echo360 session, including when Echo360 is embedded inside an LMS such as Canvas. No other websites are accessed. |
 
 **Remote code:** No, I am not using remote code.
 

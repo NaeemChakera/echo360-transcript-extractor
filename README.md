@@ -66,7 +66,7 @@ The extension makes 4 requests at a time and retries on rate limits.
 
 - The extension talks only to Echo360, using your existing session.
 - No analytics and no outside servers.
-- Its permissions are limited to Echo360 domains, plus the page you're on when you click the icon.
+- It asks for only two permissions, `downloads` and `storage`, and runs only on Echo360 domains.
 
 ## Limitations
 
