@@ -1,4 +1,4 @@
-# Canvas Echo360 Transcript Extractor
+# Echo360 Transcripts
 
 A Chrome extension that downloads **every transcript in an Echo360 course** as one ZIP file. It doesn't download any video.
 

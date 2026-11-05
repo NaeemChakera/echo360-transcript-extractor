@@ -1,5 +1,5 @@
 {
-  "name": "canvas-echo360-transcript-extractor",
+  "name": "echo360-transcripts",
   "version": "1.0.0",
   "private": true,
   "description": "Chrome extension: download every Echo360 transcript in a course as a ZIP.",
