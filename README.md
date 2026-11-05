@@ -1,6 +1,6 @@
 # Echo360 Transcripts
 
-A Chrome extension that downloads **every transcript in an Echo360 course** as one ZIP file. It doesn't download any video.
+A Chrome extension that downloads **every transcript in an Echo360 course** as one ZIP file. It doesn't download any video. The Chrome Extension is pending review as of now on the Chrome Web Store.
 
 It works at any school that uses Echo360's cloud service:
 
