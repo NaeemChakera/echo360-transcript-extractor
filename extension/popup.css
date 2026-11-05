@@ -1,0 +1,58 @@
+:root {
+  --bg: #ffffff;
+  --card: #f5f7fb;
+  --text: #1c2333;
+  --muted: #5f6b7f;
+  --accent: #2563eb;
+  --accent-hover: #1d4fd8;
+  --ok: #15803d;
+  --err: #b91c1c;
+  --border: #e1e6ef;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161a22;
+    --card: #1f2530;
+    --text: #e8ecf3;
+    --muted: #9aa5b8;
+    --accent: #4f8cff;
+    --accent-hover: #6b9fff;
+    --ok: #4ade80;
+    --err: #f87171;
+    --border: #2c3442;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  width: 340px;
+  margin: 0;
+  padding: 14px;
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+h1 { font-size: 15px; margin: 0; }
+h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 8px 0 4px; }
+h2:first-child { margin-top: 0; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+.muted { color: var(--muted); }
+.course { font-weight: 600; font-size: 14px; }
+label { display: flex; align-items: baseline; gap: 6px; padding: 2px 0; cursor: pointer; }
+label .muted { font-size: 12px; }
+button {
+  width: 100%; padding: 9px; margin-bottom: 10px; border: 0; border-radius: 8px;
+  background: var(--accent); color: #fff; font-weight: 600; font-size: 13px; cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--accent-hover); }
+button:disabled { opacity: .5; cursor: default; }
+.bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 6px 0; }
+#bar-fill { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.ok #progress-text { color: var(--ok); font-weight: 600; }
+.err #progress-text { color: var(--err); font-weight: 600; }
+.help ol { margin: 4px 0 0; padding-left: 18px; }
+.help p { margin: 0 0 4px; }
+details { margin-top: 6px; }
+summary { cursor: pointer; color: var(--muted); }
+#missing { margin: 4px 0 0; padding-left: 16px; max-height: 140px; overflow: auto; font-size: 12px; }
+footer { font-size: 11px; text-align: center; }

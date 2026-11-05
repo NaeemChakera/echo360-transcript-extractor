@@ -1,0 +1,12 @@
+{
+  "name": "canvas-echo360-transcript-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension: download every Echo360 transcript in a course as a ZIP.",
+  "scripts": {
+    "test": "node --test tests/unit.test.js",
+    "test:e2e": "node tests/e2e.js syllabus && node tests/e2e.js dom",
+    "package": "cd extension && zip -r ../echo360-transcript-extractor.zip . -x '.*'"
+  },
+  "license": "MIT"
+}

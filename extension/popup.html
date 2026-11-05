@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Echo360 Transcripts</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon48.png" alt="" width="28" height="28" />
+      <h1>Echo360 Transcripts</h1>
+    </header>
+
+    <section id="detect" class="card">
+      <div id="detect-status" class="muted">Looking for an Echo360 course on this page…</div>
+      <div id="course" class="course" hidden></div>
+    </section>
+
+    <section id="help" class="card help" hidden></section>
+
+    <section id="options" class="card">
+      <h2>Formats</h2>
+      <label><input type="checkbox" name="format" value="txt" checked /> Text <span class="muted">(.txt, readable paragraphs)</span></label>
+      <label><input type="checkbox" name="format" value="timestamps" /> Text with timestamps <span class="muted">(.txt)</span></label>
+      <label><input type="checkbox" name="format" value="vtt" /> Captions <span class="muted">(.vtt)</span></label>
+      <label><input type="checkbox" name="format" value="srt" /> Captions <span class="muted">(.srt)</span></label>
+      <h2>Extras</h2>
+      <label><input type="checkbox" id="combined" /> Also add one file with every transcript</label>
+      <label><input type="checkbox" id="speakers" checked /> Include speaker names when available</label>
+    </section>
+
+    <button id="start" disabled>Download all transcripts (.zip)</button>
+
+    <section id="progress" class="card" hidden>
+      <div id="progress-text"></div>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <div id="progress-counts" class="muted"></div>
+      <details id="missing-wrap" hidden>
+        <summary id="missing-summary"></summary>
+        <ul id="missing"></ul>
+      </details>
+    </section>
+
+    <footer class="muted">You can close this popup — the download keeps going.</footer>
+    <script src="popup.js"></script>
+  </body>
+</html>
