@@ -1,6 +1,6 @@
 # Echo360 Transcripts
 
-A Chrome extension that downloads **every transcript in an Echo360 course** as one ZIP file. It doesn't download any video.
+A Chrome extension that downloads **every transcript in an Echo360 course** as one ZIP file. It doesn't download any video. The Chrome Extension is pending review as of now on the Chrome Web Store.
 
 It works at any school that uses Echo360's cloud service:
 
@@ -66,7 +66,7 @@ The extension makes 4 requests at a time and retries on rate limits.
 
 - The extension talks only to Echo360, using your existing session.
 - No analytics and no outside servers.
-- Its permissions are limited to Echo360 domains, plus the page you're on when you click the icon.
+- It asks for only two permissions, `downloads` and `storage`, and runs only on Echo360 domains.
 
 ## Limitations
 
@@ -93,3 +93,5 @@ The end-to-end test needs Playwright with Chromium.
 | `extension/lib/zip.js` | Dependency-free ZIP writer (deflate via `CompressionStream`) |
 | `extension/background.js` | Builds the ZIP and saves it |
 | `extension/popup.*` | The popup UI |
+
+Made by Naeem Chakera, Colorado State University (with assistance from Claude)

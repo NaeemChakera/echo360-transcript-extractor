@@ -1,7 +1,6 @@
 'use strict';
 
 const $ = (id) => document.getElementById(id);
-const ECHO_HOST = /(^|\.)echo360\.(org|org\.uk|org\.au|net\.au|ca|com|net)$/i;
 const DEFAULTS = { formats: ['txt'], combined: false, speakers: true };
 
 let tabId = null;
@@ -30,47 +29,18 @@ document.addEventListener('change', () => {
 
 // ------------------------------------------------------------- detection --
 
-function isEchoUrl(url) {
-  try {
-    return ECHO_HOST.test(new URL(url).hostname);
-  } catch (_) {
-    return false;
-  }
-}
-
-/** Find the frame in the tab that is showing an Echo360 course. */
+/**
+ * Find the Echo360 course in the tab. The content script runs in every
+ * Echo360 frame (including one embedded in Canvas); course frames answer
+ * first, other Echo360 frames answer a moment later.
+ */
 async function findEchoFrame() {
-  // 1) Ask every frame we can reach what it is (needs activeTab for the LMS page itself).
-  try {
-    const probeFn = () => ({
-      href: location.href,
-      info: globalThis.EchoTxContent ? globalThis.EchoTxContent.probe() : null,
-    });
-    let results = await chrome.scripting.executeScript({ target: { tabId, allFrames: true }, func: probeFn });
-
-    // Echo360 frames that loaded before the extension was installed have no content script yet.
-    const bare = results.filter((r) => r.result && !r.result.info && isEchoUrl(r.result.href)).map((r) => r.frameId);
-    if (bare.length) {
-      await chrome.scripting.executeScript({
-        target: { tabId, frameIds: bare },
-        files: ['lib/transcript.js', 'content.js'],
-      });
-      results = await chrome.scripting.executeScript({ target: { tabId, allFrames: true }, func: probeFn });
-    }
-
-    const infos = results.filter((r) => r.result && r.result.info).map((r) => ({ ...r.result.info, frameId: r.frameId }));
-    const best = infos.find((i) => i.onSectionPage) || infos.find((i) => i.sectionId) || infos[0];
-    if (best) return best;
-    return { none: true, topUrl: results.find((r) => r.frameId === 0)?.result?.href };
-  } catch (_) {
-    // Fall through to messaging (works without access to the outer page).
-  }
-
-  // 2) Broadcast to content scripts; only Echo360 course frames reply.
   try {
     const info = await chrome.tabs.sendMessage(tabId, { type: 'echoTx:probe' });
-    if (info) return { ...info, frameId: undefined };
-  } catch (_) {}
+    if (info) return info;
+  } catch (_) {
+    // No Echo360 frame (or it was opened before the extension was installed).
+  }
   return { none: true };
 }
 
