@@ -93,3 +93,5 @@ The end-to-end test needs Playwright with Chromium.
 | `extension/lib/zip.js` | Dependency-free ZIP writer (deflate via `CompressionStream`) |
 | `extension/background.js` | Builds the ZIP and saves it |
 | `extension/popup.*` | The popup UI |
+
+Made by Naeem Chakera, Colorado State University (with assistance from Claude)
