@@ -85,6 +85,10 @@ npm run package     # zip the extension/ folder for the Chrome Web Store
 
 The end-to-end test needs Playwright with Chromium.
 
+## Tested at
+
+- Colorado State University
+
 | File | What it does |
 |---|---|
 | `extension/manifest.json` | Manifest V3 |
