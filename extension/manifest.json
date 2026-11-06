@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Echo360 Transcript Extractor",
   "short_name": "Echo360 Transcripts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Download every Echo360 lecture transcript in a course as one ZIP. Works inside Canvas and other LMSs, at any university on Echo360.",
   "author": "Naeem Chakera",
   "permissions": [
